@@ -1,0 +1,757 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "email": "demo@user.com",
+      "password": "demo123",
+      "name": "Demo User",
+      "favorites": [
+        "l12",
+        "l7"
+      ]
+    }
+  ],
+  "listings": [
+    {
+      "id": "l1",
+      "title": "Cozy Loft",
+      "city": "Bishkek",
+      "pricePerNight": 35,
+      "rating": 4.6,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/loft1.jpg",
+        "/img/loft2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "AC"
+      ],
+      "bookingsCount": 2,
+      "description": "Nice place near center"
+    },
+    {
+      "id": "l2",
+      "title": "Green Apartment",
+      "city": "Osh",
+      "pricePerNight": 55,
+      "rating": 4.9,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/apt1.jpg",
+        "/img/apt2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Parking"
+      ],
+      "bookingsCount": 0,
+      "description": "Park view"
+    },
+    {
+      "id": "l3",
+      "title": "Sunny Studio",
+      "city": "Bishkek",
+      "pricePerNight": 40,
+      "rating": 4.7,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/studio1.jpg",
+        "/img/studio2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "AC",
+        "Kitchen"
+      ],
+      "bookingsCount": 5,
+      "description": "Bright studio close to shops"
+    },
+    {
+      "id": "l4",
+      "title": "Mountain Cabin",
+      "city": "Karakol",
+      "pricePerNight": 70,
+      "rating": 4.8,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "Fireplace",
+        "Parking",
+        "WiFi"
+      ],
+      "bookingsCount": 3,
+      "description": "Cozy wooden cabin with mountain view"
+    },
+    {
+      "id": "l5",
+      "title": "City Center Flat",
+      "city": "Osh",
+      "pricePerNight": 50,
+      "rating": 4.5,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/flat1.jpg",
+        "/img/flat2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "AC",
+        "Elevator"
+      ],
+      "bookingsCount": 1,
+      "description": "Modern flat in the city center"
+    },
+    {
+      "id": "l6",
+      "title": "Lakeside House",
+      "city": "Issyk-Kul",
+      "pricePerNight": 90,
+      "rating": 5,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/lake1.jpg",
+        "/img/lake2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Parking",
+        "Balcony"
+      ],
+      "bookingsCount": 7,
+      "description": "Beautiful house near the lake"
+    },
+    {
+      "id": "l7",
+      "title": "Budget Room",
+      "city": "Bishkek",
+      "pricePerNight": 20,
+      "rating": 4.1,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/room1.jpg"
+      ],
+      "amenities": [
+        "WiFi"
+      ],
+      "bookingsCount": 14,
+      "description": "Affordable stay for short visits"
+    },
+    {
+      "id": "l8",
+      "title": "Luxury Penthouse",
+      "city": "Bishkek",
+      "pricePerNight": 150,
+      "rating": 4.9,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/pent1.jpg",
+        "/img/pent2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "AC",
+        "Terrace",
+        "Parking"
+      ],
+      "bookingsCount": 0,
+      "description": "Spacious penthouse with panoramic city view"
+    },
+    {
+      "id": "l9",
+      "title": "Eco Cottage",
+      "city": "Cholpon-Ata",
+      "pricePerNight": 65,
+      "rating": 4.8,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/cottage1.jpg",
+        "/img/cottage2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Garden",
+        "Parking"
+      ],
+      "bookingsCount": 6,
+      "description": "Quiet eco-friendly cottage surrounded by nature"
+    },
+    {
+      "id": "l10",
+      "title": "Modern Studio",
+      "city": "Bishkek",
+      "pricePerNight": 45,
+      "rating": 4.4,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/modern1.jpg",
+        "/img/modern2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "AC"
+      ],
+      "bookingsCount": 8,
+      "description": "Compact and stylish studio in modern complex"
+    },
+    {
+      "id": "l11",
+      "title": "Countryside Villa",
+      "city": "Tokmok",
+      "pricePerNight": 110,
+      "rating": 5,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/villa1.jpg",
+        "/img/villa2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Parking",
+        "Garden",
+        "Pool"
+      ],
+      "bookingsCount": 2,
+      "description": "Luxury villa with private pool and garden"
+    },
+    {
+      "id": "l12",
+      "title": "Minimal Apartment",
+      "city": "Bishkek",
+      "pricePerNight": 38,
+      "rating": 4.3,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/min1.jpg",
+        "/img/min2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Kitchen"
+      ],
+      "bookingsCount": 4,
+      "description": "Minimalist style apartment with clean design"
+    },
+    {
+      "id": "l13",
+      "title": "Old Town Home",
+      "city": "Osh",
+      "pricePerNight": 30,
+      "rating": 4.2,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/old1.jpg",
+        "/img/old2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Parking"
+      ],
+      "bookingsCount": 3,
+      "description": "Charming home in historic neighborhood"
+    },
+    {
+      "id": "l14",
+      "title": "Artist’s Loft",
+      "city": "Bishkek",
+      "pricePerNight": 60,
+      "rating": 4.7,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/artist1.jpg",
+        "/img/artist2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "AC",
+        "Kitchen"
+      ],
+      "bookingsCount": 5,
+      "description": "Creative open-space loft full of light"
+    },
+    {
+      "id": "l15",
+      "title": "Seaside Bungalow",
+      "city": "Cholpon-Ata",
+      "pricePerNight": 80,
+      "rating": 4.9,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/bung1.jpg",
+        "/img/bung2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Beach Access",
+        "AC"
+      ],
+      "bookingsCount": 9,
+      "description": "Relaxing bungalow steps from the beach"
+    },
+    {
+      "id": "l16",
+      "title": "Garden Apartment",
+      "city": "Bishkek",
+      "pricePerNight": 42,
+      "rating": 4.5,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/garden1.jpg",
+        "/img/garden2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Garden",
+        "AC"
+      ],
+      "bookingsCount": 3,
+      "description": "Ground floor apartment with private garden"
+    },
+    {
+      "id": "l17",
+      "title": "Studio by Bazaar",
+      "city": "Osh",
+      "pricePerNight": 28,
+      "rating": 4.1,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/baz1.jpg",
+        "/img/baz2.jpg"
+      ],
+      "amenities": [
+        "WiFi"
+      ],
+      "bookingsCount": 11,
+      "description": "Small and cozy studio next to the bazaar"
+    },
+    {
+      "id": "l18",
+      "title": "Mountain View Apartment",
+      "city": "Karakol",
+      "pricePerNight": 58,
+      "rating": 4.6,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/mount1.jpg",
+        "/img/mount2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Parking",
+        "Balcony"
+      ],
+      "bookingsCount": 6,
+      "description": "Apartment with amazing mountain view"
+    },
+    {
+      "id": "l19",
+      "title": "Downtown Room",
+      "city": "Bishkek",
+      "pricePerNight": 33,
+      "rating": 4,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/down1.jpg"
+      ],
+      "amenities": [
+        "WiFi"
+      ],
+      "bookingsCount": 10,
+      "description": "Simple private room in downtown area"
+    },
+    {
+      "id": "l20",
+      "title": "Family House",
+      "city": "Tokmok",
+      "pricePerNight": 75,
+      "rating": 4.8,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "/img/fam1.jpg",
+        "/img/fam2.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Parking",
+        "Kitchen",
+        "Yard"
+      ],
+      "bookingsCount": 5,
+      "description": "Spacious family home with large yard"
+    },
+    {
+      "id": "l21",
+      "title": "Mountain Cabin",
+      "city": "Karakol",
+      "pricePerNight": 60,
+      "rating": 4.8,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "Fireplace",
+        "WiFi"
+      ],
+      "bookingsCount": 3,
+      "description": "Cozy wooden cabin surrounded by mountains"
+    },
+    {
+      "id": "l22",
+      "title": "Yurt Camp Serenity",
+      "city": "Issyk-Kul",
+      "pricePerNight": 45,
+      "rating": 4.5,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "Breakfast",
+        "Lake View"
+      ],
+      "bookingsCount": 8,
+      "description": "Traditional yurts with beautiful lake views"
+    },
+    {
+      "id": "l23",
+      "title": "Urban Studio",
+      "city": "Bishkek",
+      "pricePerNight": 38,
+      "rating": 4.2,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Kitchen"
+      ],
+      "bookingsCount": 1,
+      "description": "Compact and modern apartment downtown"
+    },
+    {
+      "id": "l24",
+      "title": "Riverside Cottage",
+      "city": "Tokmok",
+      "pricePerNight": 50,
+      "rating": 4.7,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "Garden",
+        "BBQ"
+      ],
+      "bookingsCount": 4,
+      "description": "Peaceful stay by the river"
+    },
+    {
+      "id": "l25",
+      "title": "Nomad Tent",
+      "city": "Naryn",
+      "pricePerNight": 30,
+      "rating": 4.4,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "Breakfast",
+        "Mountain View"
+      ],
+      "bookingsCount": 6,
+      "description": "Experience the traditional Kyrgyz lifestyle"
+    },
+    {
+      "id": "l26",
+      "title": "Luxury Apartment",
+      "city": "Bishkek",
+      "pricePerNight": 120,
+      "rating": 5,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "AC",
+        "Balcony"
+      ],
+      "bookingsCount": 10,
+      "description": "Elegant apartment with panoramic city view"
+    },
+    {
+      "id": "l27",
+      "title": "Lakeview Villa",
+      "city": "Cholpon-Ata",
+      "pricePerNight": 90,
+      "rating": 4.9,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Private Beach"
+      ],
+      "bookingsCount": 9,
+      "description": "Spacious villa overlooking Issyk-Kul Lake"
+    },
+    {
+      "id": "l28",
+      "title": "Downtown Apartment",
+      "city": "Osh",
+      "pricePerNight": 42,
+      "rating": 4.3,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "AC"
+      ],
+      "bookingsCount": 2,
+      "description": "Comfortable and modern stay in the heart of Osh"
+    },
+    {
+      "id": "l29",
+      "title": "Forest Cabin",
+      "city": "Arslanbob",
+      "pricePerNight": 55,
+      "rating": 4.6,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "Fireplace",
+        "Hiking Trails"
+      ],
+      "bookingsCount": 5,
+      "description": "Hidden cabin in the walnut forest"
+    },
+    {
+      "id": "l30",
+      "title": "Sunny Apartment",
+      "city": "Bishkek",
+      "pricePerNight": 40,
+      "rating": 4.1,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Kitchen"
+      ],
+      "bookingsCount": 1,
+      "description": "Bright apartment with modern design"
+    },
+    {
+      "id": "l31",
+      "title": "Eco Lodge",
+      "city": "Jalal-Abad",
+      "pricePerNight": 48,
+      "rating": 4.7,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "Solar Power",
+        "Breakfast"
+      ],
+      "bookingsCount": 3,
+      "description": "Eco-friendly lodge surrounded by nature"
+    },
+    {
+      "id": "l32",
+      "title": "Traditional Yurt Stay",
+      "city": "Son-Kul",
+      "pricePerNight": 35,
+      "rating": 4.8,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "Breakfast",
+        "Lake View"
+      ],
+      "bookingsCount": 7,
+      "description": "Stay in a yurt near the scenic Son-Kul Lake"
+    },
+    {
+      "id": "l33",
+      "title": "City Loft",
+      "city": "Bishkek",
+      "pricePerNight": 50,
+      "rating": 4.3,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Washer"
+      ],
+      "bookingsCount": 4,
+      "description": "Stylish loft for modern travelers"
+    },
+    {
+      "id": "l34",
+      "title": "Garden House",
+      "city": "Tokmok",
+      "pricePerNight": 37,
+      "rating": 4.2,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "Garden",
+        "WiFi"
+      ],
+      "bookingsCount": 2,
+      "description": "Quiet house surrounded by greenery"
+    },
+    {
+      "id": "l35",
+      "title": "Boutique Apartment",
+      "city": "Osh",
+      "pricePerNight": 65,
+      "rating": 4.9,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Balcony"
+      ],
+      "bookingsCount": 6,
+      "description": "Boutique-style apartment near central park"
+    },
+    {
+      "id": "l36",
+      "title": "Cozy Family Home",
+      "city": "Bishkek",
+      "pricePerNight": 55,
+      "rating": 4.6,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "Parking"
+      ],
+      "bookingsCount": 5,
+      "description": "Spacious home perfect for families"
+    },
+    {
+      "id": "l37",
+      "title": "Hillside Cabin",
+      "city": "Kemin",
+      "pricePerNight": 49,
+      "rating": 4.5,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "Fireplace",
+        "Mountain View"
+      ],
+      "bookingsCount": 3,
+      "description": "Rustic cabin with scenic hillside views"
+    },
+    {
+      "id": "l38",
+      "title": "Downtown Loft",
+      "city": "Bishkek",
+      "pricePerNight": 47,
+      "rating": 4.4,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "AC"
+      ],
+      "bookingsCount": 2,
+      "description": "Central loft ideal for city explorers"
+    },
+    {
+      "id": "l39",
+      "title": "Alpine Guesthouse",
+      "city": "Karakol",
+      "pricePerNight": 58,
+      "rating": 4.8,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "Breakfast",
+        "Parking"
+      ],
+      "bookingsCount": 7,
+      "description": "Friendly guesthouse near ski resorts"
+    },
+    {
+      "id": "l40",
+      "title": "Modern Studio",
+      "city": "Osh",
+      "pricePerNight": 44,
+      "rating": 4.3,
+      "thumbnailUrl": "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg",
+      "photos": [
+        "https://www.advantour.com/img/kyrgyzstan/culture/kyrgyzstan-culture-yurts.jpg"
+      ],
+      "amenities": [
+        "WiFi",
+        "AC"
+      ],
+      "bookingsCount": 1,
+      "description": "Minimalist design studio with all essentials"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "b1",
+      "listingId": "l1",
+      "userId": "u1",
+      "checkIn": "2025-10-20",
+      "checkOut": "2025-10-22",
+      "guests": 2,
+      "createdAt": "2025-10-10T10:00:00.000Z"
+    },
+    {
+      "id": "b_3c1defc2-fdac-43b4-a524-099302533f09",
+      "listingId": "l7",
+      "userId": "u1",
+      "checkIn": "2025-10-31",
+      "checkOut": "2025-11-01",
+      "guests": 2,
+      "createdAt": "2025-10-18T12:53:23.468Z"
+    },
+    {
+      "id": "b_a22ffaf3-5634-4f3e-abb7-cc4da7bf11ee",
+      "listingId": "l7",
+      "userId": "u1",
+      "checkIn": "2025-10-21",
+      "checkOut": "2025-10-22",
+      "guests": 4,
+      "createdAt": "2025-10-18T12:53:57.332Z"
+    }
+  ]
+}
