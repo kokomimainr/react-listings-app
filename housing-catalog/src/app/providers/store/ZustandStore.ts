@@ -10,14 +10,17 @@ interface FiltersState {
   setFilters: (filters: Partial<FiltersState>) => void;
 }
 
-interface FavoritesState {
-  favorites: string[];
-  toggleFavorite: (id: string) => void;
-}
-
 interface AuthState {
   token: string | null;
   setToken: (token: string | null) => void;
+  logout: () => void;
+}
+
+interface FavoritesState {
+  favorites: string[];
+  setFavorites: (favorites: string[]) => void;
+  toggleFavorite: (id: string) => void;
+  clearFavorites: () => void;
 }
 
 export const useFiltersStore = create<FiltersState>()(
@@ -34,29 +37,38 @@ export const useFiltersStore = create<FiltersState>()(
   )
 );
 
-export const useFavoritesStore = create<FavoritesState>()(
-  persist(
-    (set, get) => ({
-      favorites: [],
-      toggleFavorite: (id) => {
-        const exists = get().favorites.includes(id);
-        set({
-          favorites: exists
-            ? get().favorites.filter((f) => f !== id)
-            : [...get().favorites, id],
-        });
-      },
-    }),
-    { name: "favorites-storage" }
-  )
-);
-
 export const useAuthStore = create<AuthState>()(
   persist(
     (set) => ({
       token: null,
       setToken: (token) => set({ token }),
+      logout: () => set({ token: null }),
     }),
     { name: "auth-storage" }
+  )
+);
+
+export const useFavoritesStore = create<FavoritesState>()(
+  persist(
+    (set, get) => ({
+      favorites: [],
+
+      setFavorites: (favorites) => set({ favorites }),
+
+      toggleFavorite: (id: string) => {
+        const { favorites } = get();
+        const exists = favorites.includes(id);
+        const newFavorites = exists
+          ? favorites.filter((f) => f !== id)
+          : [...favorites, id];
+
+        set({ favorites: newFavorites });
+      },
+
+      clearFavorites: () => set({ favorites: [] }),
+    }),
+    {
+      name: "favorites-storage",
+    }
   )
 );

@@ -16,6 +16,13 @@ export interface ListingDetail extends Listing {
   bookingsCount: number;
 }
 
+export interface BookingRequest {
+  listingId: string;
+  checkIn: string;
+  checkOut: string;
+  guests: number;
+}
+
 export interface Booking {
   id: string;
   listingId: string;
@@ -24,11 +31,4 @@ export interface Booking {
   checkOut: string;
   guests: number;
   createdAt: string;
-}
-
-export interface BookingRequest {
-  listingId: string;
-  checkIn: string;
-  checkOut: string;
-  guests: number;
 }
