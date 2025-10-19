@@ -7,8 +7,10 @@ import {
   useAuthStore,
 } from "@/app/providers/store/ZustandStore";
 import { attachAuth } from "../shared/api";
+import { useTranslation } from "react-i18next";
 
 export const ListingsPage: React.FC = () => {
+  const { t } = useTranslation();
   const { city, minPrice, maxPrice, minRating, sort } = useFiltersStore();
   const token = useAuthStore((s) => s.token);
 
@@ -53,15 +55,16 @@ export const ListingsPage: React.FC = () => {
     return (
       <div className="flex justify-center items-center min-h-64">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <span className="ml-3 text-gray-600">{t("loading")}</span>
       </div>
     );
 
   if (isError)
     return (
       <div className="p-8">
-        <div className="mb-4">Failed to load listings.</div>
+        <div className="mb-4">{t("loadListingsError")}</div>
         <button onClick={() => refetch()} className="px-3 py-2 border rounded">
-          Retry
+          {t("retry")}
         </button>
       </div>
     );
@@ -79,9 +82,9 @@ export const ListingsPage: React.FC = () => {
         <main className="lg:col-span-3">
           {items.length === 0 ? (
             <div className="p-8 bg-white rounded-lg shadow text-center">
-              <div className="text-gray-500 mb-2">No listings found</div>
+              <div className="text-gray-500 mb-2">{t("noListingsFound")}</div>
               <div className="text-sm text-gray-400">
-                Try adjusting your filters
+                {t("tryAdjustingFilters")}
               </div>
             </div>
           ) : (
@@ -96,7 +99,7 @@ export const ListingsPage: React.FC = () => {
                 <div className="flex justify-center items-center py-8">
                   <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
                   <span className="ml-3 text-gray-600">
-                    Loading more listings...
+                    {t("loadingMoreListings")}
                   </span>
                 </div>
               )}
@@ -104,12 +107,12 @@ export const ListingsPage: React.FC = () => {
               <div ref={loadMoreRef as any} className="mt-6 text-center">
                 {hasNextPage && !isFetchingNextPage && (
                   <div className="text-gray-500 text-sm py-4">
-                    Scroll down to load more
+                    {t("scrollToLoadMore")}
                   </div>
                 )}
                 {!hasNextPage && items.length > 0 && (
                   <div className="text-gray-400 text-sm py-4 border-t">
-                    — You've reached the end —
+                    {t("reachedTheEnd")}
                   </div>
                 )}
               </div>

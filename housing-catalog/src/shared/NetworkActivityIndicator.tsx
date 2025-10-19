@@ -1,28 +1,27 @@
-import React from 'react';
-import { useIsFetching, useIsMutating } from '@tanstack/react-query';
+import React from "react";
+import { useIsFetching, useIsMutating } from "@tanstack/react-query";
 
 export const NetworkActivityIndicator: React.FC = () => {
-  // Считаем все активные фетчи и мутации
   const isFetching = useIsFetching();
   const isMutating = useIsMutating();
-  
+
   const isLoading = isFetching > 0 || isMutating > 0;
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      <div 
+      <div
         className={`h-1 bg-blue-500 transition-all duration-300 ${
-          isLoading ? 'w-full opacity-100' : 'w-0 opacity-0'
+          isLoading ? "w-full opacity-100" : "w-0 opacity-0"
         }`}
         style={{
-          background: 'linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd)',
+          background: "linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd)",
         }}
       >
         {isLoading && (
-          <div 
+          <div
             className="h-full bg-white opacity-30 w-1/2 absolute animate-pulse"
             style={{
-              animation: 'shimmer 2s infinite',
+              animation: "shimmer 2s infinite",
             }}
           />
         )}
