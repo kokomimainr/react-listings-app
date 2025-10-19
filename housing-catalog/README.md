@@ -1,73 +1,56 @@
-# React + TypeScript + Vite
+# 🏠 Housing Catalog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Каталог жилья для аренды с возможностью бронирования, фильтрации и добавления в избранное.
 
-Currently, two official plugins are available:
+## 🚀 Возможности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **📋 Список объявлений** - Просмотр карточек жилья с фото, ценой, рейтингом
+- **🔍 Фильтры и сортировка** - Поиск по городу, цене, рейтингу с различными вариантами сортировки
+- **❤️ Избранное** - Добавление/удаление объявлений в избранное (требует авторизации)
+- **🏨 Детальная страница** - Полная информация о жилье с галереей фото и описанием
+- **📅 Бронирование** - Система бронирования с выбором дат и гостей
+- **🔐 Авторизация** - Простая форма входа с сохранением сессии
+- **🌐 Мультиязычность** - Поддержка русского и английского языков
+- **📱 Адаптивный дизайн** - Оптимизирован для мобильных устройств и десктопа
 
-## React Compiler
+## 🛠 Технологии
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend:** React 18 + TypeScript
+- **Стили:** Tailwind CSS
+- **Маршрутизация:** React Router v6
+- **Управление состоянием:** Zustand + React Query
+- **HTTP-клиент:** Axios
+- **Интернационализация:** i18next
+- **Иконки:** React Icons
 
-## Expanding the ESLint configuration
+## 🏃‍♂️ Быстрый старт
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Запуск development сервера
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Запуск mock API сервера
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run start
 ```
+
+Приложение будет доступно по адресу: `http://localhost:5173`  
+API сервер: `http://localhost:4000`
+
+## 🔑 Тестовые данные
+
+Для входа используйте:
+
+- **Email:** `demo@user.com`
+- **Пароль:** `demo123`
+
+## 🎯 Ключевые особенности
+
+- **Бесконечный скролл** - Плавная подгрузка объявлений
+- **Оптимистичные обновления** - Мгновенный отклик UI при действиях
+- **Persistent state** - Сохранение фильтров и избранного между сессиями
