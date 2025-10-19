@@ -1,32 +1,40 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useListingDetail } from "@/hooks/useListingDetail";
-import { useAuthStore, useFavoritesStore } from "@/app/providers/store/ZustandStore";
+import {
+  useAuthStore,
+  useFavoritesStore,
+} from "@/app/providers/store/ZustandStore";
 import { useToggleFavorite } from "@/hooks/useFavorites";
 import { PhotoGallery } from "@/widgets/PhotoGallery/PhotoGallery";
 import { BookingForm } from "@/features/booking/BookingForm";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 export const ListingDetailPage: React.FC = () => {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { data: listing, isLoading, isError, error } = useListingDetail(id || "");
+  const {
+    data: listing,
+    isLoading,
+    isError,
+    error,
+  } = useListingDetail(id || "");
   const token = useAuthStore((state) => state.token);
-  const favorites = useFavoritesStore((state) => state.favorites); // ← Берем из Zustand
+  const favorites = useFavoritesStore((state) => state.favorites);
   const { mutate: toggleFavorite, isPending } = useToggleFavorite();
 
-
-  // Early returns для ошибок и загрузки
   if (!id) {
     return (
       <div className="container mx-auto p-4">
         <div className="bg-white rounded-lg shadow p-8 text-center">
-          <h2 className="text-xl font-semibold mb-4">Listing not found</h2>
+          <h2 className="text-xl font-semibold mb-4">{t("listingNotFound")}</h2>
           <button
             onClick={() => navigate("/")}
             className="text-blue-600 hover:underline"
           >
-            Back to listings
+            {t("backToListings")}
           </button>
         </div>
       </div>
@@ -38,6 +46,7 @@ export const ListingDetailPage: React.FC = () => {
       <div className="container mx-auto p-4">
         <div className="flex justify-center items-center min-h-64">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <span className="ml-3 text-gray-600">{t("loading")}</span>
         </div>
       </div>
     );
@@ -47,22 +56,24 @@ export const ListingDetailPage: React.FC = () => {
     return (
       <div className="container mx-auto p-4">
         <div className="bg-white rounded-lg shadow p-8 text-center">
-          <h2 className="text-xl font-semibold mb-4">Failed to load listing</h2>
+          <h2 className="text-xl font-semibold mb-4">
+            {t("failedToLoadListing")}
+          </h2>
           <div className="text-gray-600 mb-4">
-            {error instanceof Error ? error.message : "Unknown error occurred"}
+            {error instanceof Error ? error.message : t("unknownError")}
           </div>
           <div className="space-x-4">
             <button
               onClick={() => window.location.reload()}
               className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
             >
-              Retry
+              {t("retry")}
             </button>
             <button
               onClick={() => navigate("/")}
               className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50"
             >
-              Back to listings
+              {t("backToListings")}
             </button>
           </div>
         </div>
@@ -70,7 +81,6 @@ export const ListingDetailPage: React.FC = () => {
     );
   }
 
-  // Если дошли сюда, значит listing точно существует
   if (!listing) return null;
 
   const isFav = favorites.includes(listing.id);
@@ -88,7 +98,7 @@ export const ListingDetailPage: React.FC = () => {
           className="flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-4 transition-colors"
         >
           <span>←</span>
-          <span>Back to listings</span>
+          <span>{t("backToListings")}</span>
         </button>
 
         <div className="flex justify-between items-start gap-4">
@@ -105,7 +115,7 @@ export const ListingDetailPage: React.FC = () => {
               </span>
               {listing.bookingsCount > 0 && (
                 <span className="flex items-center gap-1 bg-green-50 px-3 py-1 rounded-full text-sm text-green-700">
-                  🔥 {listing.bookingsCount} bookings
+                  🔥 {t("bookingsCount", { count: listing.bookingsCount })}
                 </span>
               )}
             </div>
@@ -115,7 +125,9 @@ export const ListingDetailPage: React.FC = () => {
             <button
               onClick={handleToggleFavorite}
               className="flex-shrink-0 p-3 bg-white border border-gray-300 rounded-full hover:bg-gray-50 transition-colors shadow-sm"
-              aria-label={isFav ? "Remove from favorites" : "Add to favorites"}
+              aria-label={
+                isFav ? t("removeFromFavorites") : t("addToFavorites")
+              }
             >
               {isFav ? (
                 <FaHeart className="text-red-500 w-6 h-6" />
@@ -127,7 +139,7 @@ export const ListingDetailPage: React.FC = () => {
             <div className="flex-shrink-0 text-sm text-gray-500 text-center">
               <div className="p-3 border border-gray-300 rounded-full bg-gray-50">
                 <FaRegHeart className="w-6 h-6 mx-auto mb-1 text-gray-400" />
-                <span className="text-xs">Login to save</span>
+                <span className="text-xs">{t("loginToSave")}</span>
               </div>
             </div>
           )}
@@ -142,7 +154,7 @@ export const ListingDetailPage: React.FC = () => {
             <div className="flex items-center gap-3 mb-6">
               <div className="w-2 h-8 bg-blue-600 rounded-full"></div>
               <h2 className="text-2xl font-bold text-gray-900">
-                About this place
+                {t("aboutThisPlace")}
               </h2>
             </div>
 
@@ -154,21 +166,19 @@ export const ListingDetailPage: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 text-sm text-gray-600">
                   <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
                     <span className="text-blue-600">🏠</span>
-                    <span>Entire accommodation to yourself</span>
+                    <span>{t("entireAccommodation")}</span>
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
                     <span className="text-green-600">🔑</span>
-                    <span>Self check-in available</span>
+                    <span>{t("selfCheckIn")}</span>
                   </div>
                 </div>
               </div>
             ) : (
               <div className="text-center py-8 text-gray-500">
                 <div className="text-4xl mb-3">🏡</div>
-                <p className="text-lg">No description provided</p>
-                <p className="text-sm mt-1">
-                  Contact the host for more details
-                </p>
+                <p className="text-lg">{t("noDescription")}</p>
+                <p className="text-sm mt-1">{t("contactHost")}</p>
               </div>
             )}
           </section>
@@ -178,12 +188,12 @@ export const ListingDetailPage: React.FC = () => {
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-2 h-8 bg-green-600 rounded-full"></div>
                 <h2 className="text-2xl font-bold text-gray-900">
-                  What this place offers
+                  {t("whatThisPlaceOffers")}
                 </h2>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {listing.amenities.map((amenity : string, index : number) => (
+                {listing.amenities.map((amenity: string, index: number) => (
                   <div
                     key={index}
                     className="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-lg transition-colors"
@@ -202,7 +212,7 @@ export const ListingDetailPage: React.FC = () => {
             <div className="flex items-center gap-3 mb-6">
               <div className="w-2 h-8 bg-purple-600 rounded-full"></div>
               <h2 className="text-2xl font-bold text-gray-900">
-                Cancellation policy
+                {t("cancellationPolicy")}
               </h2>
             </div>
 
@@ -213,11 +223,10 @@ export const ListingDetailPage: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900">
-                    Free cancellation
+                    {t("freeCancellation")}
                   </h3>
                   <p className="text-gray-600 mt-1">
-                    Cancel up to 24 hours before check-in for a full refund. No
-                    questions asked.
+                    {t("freeCancellationDescription")}
                   </p>
                 </div>
               </div>
@@ -228,10 +237,10 @@ export const ListingDetailPage: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900">
-                    Flexible booking
+                    {t("flexibleBooking")}
                   </h3>
                   <p className="text-gray-600 mt-1">
-                    Contact the host for special arrangements or extended stays.
+                    {t("flexibleBookingDescription")}
                   </p>
                 </div>
               </div>

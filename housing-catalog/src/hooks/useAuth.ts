@@ -1,5 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useAuthStore, useFavoritesStore } from "@/app/providers/store/ZustandStore";
+import {
+  useAuthStore,
+  useFavoritesStore,
+} from "@/app/providers/store/ZustandStore";
 
 export const useLogout = () => {
   const logout = useAuthStore((state) => state.logout);
@@ -11,10 +14,9 @@ export const useLogout = () => {
       return Promise.resolve();
     },
     onSuccess: () => {
-      // Очищаем всё
       queryClient.removeQueries();
-      clearFavorites(); // Очищаем избранные из Zustand + localStorage
-      logout(); // Очищаем токен
+      clearFavorites();
+      logout();
     },
   });
 };

@@ -5,7 +5,10 @@ interface PhotoGalleryProps {
   title: string;
 }
 
-export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, title }) => {
+export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
+  photos,
+  title,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   if (!photos.length) {
@@ -17,7 +20,8 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, title }) => 
   }
 
   const next = () => setCurrentIndex((prev) => (prev + 1) % photos.length);
-  const prev = () => setCurrentIndex((prev) => (prev - 1 + photos.length) % photos.length);
+  const prev = () =>
+    setCurrentIndex((prev) => (prev - 1 + photos.length) % photos.length);
 
   return (
     <div className="relative h-64 md:h-96 bg-gray-200 rounded-lg overflow-hidden">
@@ -26,7 +30,7 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, title }) => 
         alt={`${title} - Photo ${currentIndex + 1}`}
         className="w-full h-full object-cover"
       />
-      
+
       {photos.length > 1 && (
         <>
           <button
@@ -43,14 +47,14 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, title }) => 
           >
             ›
           </button>
-          
+
           <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
             {photos.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-2 h-2 rounded-full ${
-                  index === currentIndex ? 'bg-white' : 'bg-white/50'
+                  index === currentIndex ? "bg-white" : "bg-white/50"
                 }`}
                 aria-label={`Go to photo ${index + 1}`}
               />

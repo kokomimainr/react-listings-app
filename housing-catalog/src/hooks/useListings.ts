@@ -19,7 +19,9 @@ type ListingsResponse = {
   limit: number;
 };
 
-async function fetchListings(params: ListingsFetchParams): Promise<ListingsResponse> {
+async function fetchListings(
+  params: ListingsFetchParams
+): Promise<ListingsResponse> {
   const { page = 1, limit = 20, ...rest } = params;
   const res = await api.get<Listing[]>("/listings", {
     params: { ...rest, page, limit },
@@ -29,7 +31,10 @@ async function fetchListings(params: ListingsFetchParams): Promise<ListingsRespo
   return { items: res.data, total, page, limit };
 }
 
-export function useListings(params: Omit<ListingsFetchParams, "page">, enabled = true) {
+export function useListings(
+  params: Omit<ListingsFetchParams, "page">,
+  enabled = true
+) {
   return useInfiniteQuery({
     queryKey: ["listings", params] as const,
     queryFn: ({ pageParam = 1 }) => {

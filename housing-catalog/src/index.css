@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
-html, body, #root { 
-  height: 100%; 
+html,
+body,
+#root {
+  height: 100%;
 }
 
-body { 
-  background-color: #f3f4f6; 
+body {
+  background-color: #f3f4f6;
 }
 
 @keyframes shimmer {
@@ -15,16 +17,4 @@ body {
   100% {
     transform: translateX(200%);
   }
-}
-
-/* Для плавного появления/исчезания */
-.network-indicator-enter {
-  opacity: 0;
-  transform: scaleX(0);
-}
-
-.network-indicator-enter-active {
-  opacity: 1;
-  transform: scaleX(1);
-  transition: opacity 300ms, transform 300ms;
 }

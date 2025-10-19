@@ -52,22 +52,22 @@ export const useFavoritesStore = create<FavoritesState>()(
   persist(
     (set, get) => ({
       favorites: [],
-      
+
       setFavorites: (favorites) => set({ favorites }),
-      
+
       toggleFavorite: (id: string) => {
         const { favorites } = get();
         const exists = favorites.includes(id);
         const newFavorites = exists
           ? favorites.filter((f) => f !== id)
           : [...favorites, id];
-        
+
         set({ favorites: newFavorites });
       },
-      
+
       clearFavorites: () => set({ favorites: [] }),
     }),
-    { 
+    {
       name: "favorites-storage",
     }
   )

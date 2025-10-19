@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useCreateBooking } from "@/hooks/useCreateBooking";
 import { useAuthStore } from "@/app/providers/store/ZustandStore";
+import { useTranslation } from "react-i18next";
 
 interface BookingFormProps {
   listingId: string;
@@ -11,18 +12,19 @@ export const BookingForm: React.FC<BookingFormProps> = ({
   listingId,
   pricePerNight,
 }) => {
+  const { t } = useTranslation();
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [guests, setGuests] = useState(1);
   const [error, setError] = useState("");
 
   const token = useAuthStore((s) => s.token);
-  const { 
-    mutate: createBooking, 
-    isPending, 
-    isError, 
+  const {
+    mutate: createBooking,
+    isPending,
+    isError,
     isSuccess,
-    reset 
+    reset,
   } = useCreateBooking();
 
   const calculateTotal = () => {
@@ -39,12 +41,12 @@ export const BookingForm: React.FC<BookingFormProps> = ({
     setError("");
 
     if (!token) {
-      setError("Please login to book");
+      setError(t("pleaseLoginToBook"));
       return;
     }
 
     if (!checkIn || !checkOut) {
-      setError("Please select dates");
+      setError(t("pleaseSelectDates"));
       return;
     }
 
@@ -53,9 +55,9 @@ export const BookingForm: React.FC<BookingFormProps> = ({
       {
         onError: (err: any) => {
           if (err.response?.status === 409) {
-            setError("These dates are not available");
+            setError(t("datesNotAvailable"));
           } else {
-            setError("Booking failed. Please try again.");
+            setError(t("bookingFailed"));
           }
         },
       }
@@ -72,23 +74,22 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
   const today = new Date().toISOString().split("T")[0];
 
-  // Если успешно забронировали - показываем сообщение
   if (isSuccess) {
     return (
       <div className="bg-white p-6 rounded-lg shadow-md border">
         <div className="text-center">
           <div className="text-green-500 text-4xl mb-3">✅</div>
           <h3 className="text-lg font-semibold text-gray-900 mb-2">
-            Booking Confirmed!
+            {t("bookingConfirmed")}
           </h3>
           <p className="text-gray-600 text-sm">
-            Your booking has been successfully created.
+            {t("bookingCreatedSuccessfully")}
           </p>
           <button
             onClick={handleBookAgain}
             className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-sm"
           >
-            Book Again
+            {t("bookAgain")}
           </button>
         </div>
       </div>
@@ -97,7 +98,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md border">
-      <h3 className="text-lg font-semibold mb-4">Book this place</h3>
+      <h3 className="text-lg font-semibold mb-4">{t("bookThisPlace")}</h3>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
@@ -106,7 +107,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
               htmlFor="checkIn"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              Check-in
+              {t("checkIn")}
             </label>
             <input
               id="checkIn"
@@ -124,7 +125,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
               htmlFor="checkOut"
               className="block text-sm font-medium text-gray-700 mb-1"
             >
-              Check-out
+              {t("checkOut")}
             </label>
             <input
               id="checkOut"
@@ -143,7 +144,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
             htmlFor="guests"
             className="block text-sm font-medium text-gray-700 mb-1"
           >
-            Guests
+            {t("labelGuests")}
           </label>
           <select
             id="guests"
@@ -153,7 +154,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
           >
             {[1, 2, 3, 4, 5, 6].map((num) => (
               <option key={num} value={num}>
-                {num} {num === 1 ? "guest" : "guests"}
+                {num} {num === 1 ? t("guest") : t("guests")}
               </option>
             ))}
           </select>
@@ -168,7 +169,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({
                   (new Date(checkOut).getTime() - new Date(checkIn).getTime()) /
                     (1000 * 60 * 60 * 24)
                 )}{" "}
-                nights
+                {t("nights")}
               </span>
               <span className="font-semibold">${calculateTotal()}</span>
             </div>
@@ -189,12 +190,12 @@ export const BookingForm: React.FC<BookingFormProps> = ({
           {isPending ? (
             <span className="flex items-center justify-center gap-2">
               <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-              Booking...
+              {t("booking")}
             </span>
           ) : token ? (
-            "Book Now"
+            t("bookNow")
           ) : (
-            "Login to Book"
+            t("loginToBook")
           )}
         </button>
       </form>

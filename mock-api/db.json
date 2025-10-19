@@ -17,7 +17,8 @@
         "l10",
         "l38",
         "l22",
-        "l1"
+        "l1",
+        "l26"
       ]
     },
     {
@@ -505,7 +506,7 @@
         "AC",
         "Balcony"
       ],
-      "bookingsCount": 10,
+      "bookingsCount": 15,
       "description": "Elegant apartment with panoramic city view"
     },
     {
@@ -918,6 +919,51 @@
       "checkOut": "2025-11-01",
       "guests": 1,
       "createdAt": "2025-10-19T06:41:38.359Z"
+    },
+    {
+      "id": "b_60c653d1-78e3-49c2-b45b-9107c1486f25",
+      "listingId": "l26",
+      "userId": "u1",
+      "checkIn": "2025-11-07",
+      "checkOut": "2025-11-08",
+      "guests": 1,
+      "createdAt": "2025-10-19T08:53:32.541Z"
+    },
+    {
+      "id": "b_f10e9685-6c34-4062-a23b-582b5e2adc9c",
+      "listingId": "l26",
+      "userId": "u1",
+      "checkIn": "2025-11-04",
+      "checkOut": "2025-11-05",
+      "guests": 1,
+      "createdAt": "2025-10-19T08:53:51.214Z"
+    },
+    {
+      "id": "b_6e4ef30c-2fc6-4835-942a-acd3dacb90e2",
+      "listingId": "l26",
+      "userId": "u1",
+      "checkIn": "2025-11-27",
+      "checkOut": "2025-11-28",
+      "guests": 1,
+      "createdAt": "2025-10-19T08:54:08.675Z"
+    },
+    {
+      "id": "b_333e13bc-5748-468c-b657-d4bc196272e7",
+      "listingId": "l26",
+      "userId": "u1",
+      "checkIn": "2025-10-21",
+      "checkOut": "2025-10-22",
+      "guests": 1,
+      "createdAt": "2025-10-19T08:54:16.018Z"
+    },
+    {
+      "id": "b_dc809507-6e12-418d-a1ce-3056402af45d",
+      "listingId": "l26",
+      "userId": "u1",
+      "checkIn": "2025-10-19",
+      "checkOut": "2025-10-20",
+      "guests": 1,
+      "createdAt": "2025-10-19T08:54:25.338Z"
     }
   ]
 }

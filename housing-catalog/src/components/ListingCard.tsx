@@ -1,13 +1,18 @@
 import React from "react";
 import type { Listing } from "@/shared/types";
 import { Link } from "react-router-dom";
-import { useAuthStore, useFavoritesStore } from "@/app/providers/store/ZustandStore";
-import { useToggleFavorite } from "@/hooks/useFavorites"; // ← Только useToggleFavorite
+import {
+  useAuthStore,
+  useFavoritesStore,
+} from "@/app/providers/store/ZustandStore";
+import { useToggleFavorite } from "@/hooks/useFavorites";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 export const ListingCard: React.FC<{ item: Listing }> = ({ item }) => {
+  const { t } = useTranslation();
   const token = useAuthStore((state) => state.token);
-  const favorites = useFavoritesStore((state) => state.favorites); // ← Из Zustand
+  const favorites = useFavoritesStore((state) => state.favorites);
   const { mutate: toggleFavorite, isPending } = useToggleFavorite();
 
   const isFav = favorites.includes(item.id);
@@ -31,7 +36,7 @@ export const ListingCard: React.FC<{ item: Listing }> = ({ item }) => {
             className="object-cover h-full w-full group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
-          <div className="text-gray-400">No image</div>
+          <div className="text-gray-400">{t("noImage")}</div>
         )}
 
         {token && (
@@ -40,7 +45,7 @@ export const ListingCard: React.FC<{ item: Listing }> = ({ item }) => {
             disabled={isPending}
             className="absolute top-2 right-2 p-2 bg-white/90 rounded-full hover:bg-white transition-all duration-200 shadow-sm disabled:opacity-50"
             aria-pressed={isFav}
-            aria-label={isFav ? "Remove from favorites" : "Add to favorites"}
+            aria-label={isFav ? t("removeFromFavorites") : t("addToFavorites")}
           >
             {isFav ? (
               <FaHeart className="text-red-500 w-4 h-4" />
@@ -59,7 +64,7 @@ export const ListingCard: React.FC<{ item: Listing }> = ({ item }) => {
           </div>
           <div className="text-right flex-shrink-0">
             <div className="text-sm font-medium">${item.pricePerNight}</div>
-            <div className="text-xs text-gray-500">/ night</div>
+            <div className="text-xs text-gray-500">{t("perNight")}</div>
           </div>
         </div>
 
@@ -71,7 +76,7 @@ export const ListingCard: React.FC<{ item: Listing }> = ({ item }) => {
 
           {!token && (
             <div className="text-xs text-gray-400 text-right">
-              Login to save
+              {t("loginToSave")}
             </div>
           )}
         </div>
