@@ -1,37 +1,44 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useAuthStore } from "@/app/providers/ZustandStore";
+import { useAuthStore } from "@/app/providers/store/ZustandStore";
+import { useLoadFavorites } from "@/hooks/useFavorites";
 import { api, attachAuth } from "@/shared/api";
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
+  
   const setToken = useAuthStore((state) => state.setToken);
+  const { mutate: loadFavorites, isPending: isFavoritesLoading } = useLoadFavorites();
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
+  const isLoading = isFavoritesLoading;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    setIsLoading(true);
 
     try {
-      const response = await api.post("/auth/login", { email, password });
-      const { token } = response.data;
+      // 1. Логинимся
+      const loginResponse = await api.post("/auth/login", { email, password });
+      const { token } = loginResponse.data;
 
-      setToken(token);
+      // 2. Прикрепляем токен
       attachAuth(token);
 
+      // 3. Сохраняем токен
+      setToken(token);
+
+      // 4. Загружаем избранные в Zustand + localStorage
+      await loadFavorites();
+
+      // 5. Редирект
       navigate(from, { replace: true });
     } catch (err: any) {
       setError(err.response?.data?.message || "Login failed");
-    } finally {
-      setIsLoading(false);
     }
   };
 

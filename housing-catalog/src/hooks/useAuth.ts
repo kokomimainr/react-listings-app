@@ -1,17 +1,20 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { authApi, type LoginRequest } from "@/shared/api";
-import { useAuthStore } from "@/app/providers/ZustandStore";
+import { useAuthStore, useFavoritesStore } from "@/app/providers/store/ZustandStore";
 
-export const useLogin = () => {
-  const setToken = useAuthStore((state) => state.setToken);
+export const useLogout = () => {
+  const logout = useAuthStore((state) => state.logout);
+  const clearFavorites = useFavoritesStore((state) => state.clearFavorites);
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (credentials: LoginRequest) => 
-      authApi.login(credentials).then(res => res.data),
-    onSuccess: (data) => {
-      setToken(data.token);
-      queryClient.invalidateQueries({ queryKey: ["auth"] });
+    mutationFn: async () => {
+      return Promise.resolve();
+    },
+    onSuccess: () => {
+      // Очищаем всё
+      queryClient.removeQueries();
+      clearFavorites(); // Очищаем избранные из Zustand + localStorage
+      logout(); // Очищаем токен
     },
   });
 };

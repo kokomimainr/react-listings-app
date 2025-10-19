@@ -1,45 +1,44 @@
 import React from "react";
 import type { Listing } from "@/shared/types";
 import { Link } from "react-router-dom";
-import { useFavoritesStore, useAuthStore } from "@/app/providers/ZustandStore";
-import { api } from "../shared/api";
+import { useAuthStore, useFavoritesStore } from "@/app/providers/store/ZustandStore";
+import { useToggleFavorite } from "@/hooks/useFavorites"; // ← Только useToggleFavorite
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 export const ListingCard: React.FC<{ item: Listing }> = ({ item }) => {
-  const { favorites, toggleFavorite } = useFavoritesStore();
-  const token = useAuthStore((state) => state.token); 
+  const token = useAuthStore((state) => state.token);
+  const favorites = useFavoritesStore((state) => state.favorites); // ← Из Zustand
+  const { mutate: toggleFavorite, isPending } = useToggleFavorite();
+
   const isFav = favorites.includes(item.id);
 
-  async function onToggle(e: React.MouseEvent) {
+  function onToggle(e: React.MouseEvent) {
     e.preventDefault();
-    if (!token) return; 
-    
+    if (!token || isPending) return;
     toggleFavorite(item.id);
-    try {
-      await api.post(`/me/favorites/${item.id}/toggle`);
-    } catch (err) {
-      toggleFavorite(item.id);
-      console.error("Toggle favorite failed", err);
-    }
   }
 
   return (
-    <Link to={`/listing/${item.id}`} className="block bg-white rounded-lg shadow hover:shadow-md overflow-hidden group">
+    <Link
+      to={`/listing/${item.id}`}
+      className="block bg-white rounded-lg shadow hover:shadow-md overflow-hidden group"
+    >
       <div className="relative h-44 w-full bg-gray-100 flex items-center justify-center overflow-hidden">
         {item.thumbnailUrl ? (
-          <img 
-            src={item.thumbnailUrl} 
-            alt={item.title} 
-            className="object-cover h-full w-full group-hover:scale-105 transition-transform duration-300" 
+          <img
+            src={item.thumbnailUrl}
+            alt={item.title}
+            className="object-cover h-full w-full group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
           <div className="text-gray-400">No image</div>
         )}
-        
+
         {token && (
           <button
             onClick={onToggle}
-            className="absolute top-2 right-2 p-2 bg-white/90 rounded-full hover:bg-white transition-all duration-200 shadow-sm"
+            disabled={isPending}
+            className="absolute top-2 right-2 p-2 bg-white/90 rounded-full hover:bg-white transition-all duration-200 shadow-sm disabled:opacity-50"
             aria-pressed={isFav}
             aria-label={isFav ? "Remove from favorites" : "Add to favorites"}
           >
@@ -51,7 +50,7 @@ export const ListingCard: React.FC<{ item: Listing }> = ({ item }) => {
           </button>
         )}
       </div>
-      
+
       <div className="p-3">
         <div className="flex justify-between items-start gap-2">
           <div className="flex-1 min-w-0">
@@ -63,12 +62,18 @@ export const ListingCard: React.FC<{ item: Listing }> = ({ item }) => {
             <div className="text-xs text-gray-500">/ night</div>
           </div>
         </div>
-        
+
         <div className="mt-2 flex items-center justify-between">
           <div className="flex items-center gap-1 text-xs text-yellow-600 bg-yellow-50 px-2 py-1 rounded-full">
             <span>★</span>
             <span>{item.rating.toFixed(1)}</span>
           </div>
+
+          {!token && (
+            <div className="text-xs text-gray-400 text-right">
+              Login to save
+            </div>
+          )}
         </div>
       </div>
     </Link>

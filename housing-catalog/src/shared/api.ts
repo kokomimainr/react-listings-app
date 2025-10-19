@@ -1,43 +1,50 @@
 import axios from "axios";
-import type { Booking, BookingRequest, ListingDetail } from "./types";
-
+import { useAuthStore } from "@/app/providers/store/ZustandStore";
+import type { BookingRequest, Booking } from "@/shared/types";
 
 export const api = axios.create({
-baseURL: "http://localhost:4000",
-headers: {
-"Content-Type": "application/json",
-},
+  baseURL: "http://localhost:4000",
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
+// Перехватчик для автоматического логаута при 401
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      // Просто логируем и очищаем токен, без редиректа
+      console.warn("Authentication failed");
+      const logout = useAuthStore.getState().logout;
+      logout();
+    }
+    return Promise.reject(error);
+  }
+);
+
 export function attachAuth(token?: string | null) {
-if (token) api.defaults.headers.common.Authorization = `Bearer ${token}`;
-else delete api.defaults.headers.common.Authorization;
+  if (token) {
+    api.defaults.headers.common.Authorization = `Bearer ${token}`;
+  } else {
+    delete api.defaults.headers.common.Authorization;
+  }
 }
 
-export const listingsApi = {
-  getById: (id: string) => api.get<ListingDetail>(`api/listings/${id}`),
-};
-
+// API методы для бронирований
 export const bookingsApi = {
-  create: (booking: BookingRequest) => api.post<Booking>('/bookings', booking),
+  create: (booking: BookingRequest) => 
+    api.post<Booking>('/bookings', booking),
 };
 
-export interface LoginRequest {
-  email: string;
-  password: string;
-}
+// API методы для листингов (если ещё нет)
+export const listingsApi = {
+  getById: (id: string) => 
+    api.get(`/api/listings/${id}`),
+};
 
-export interface LoginResponse {
-  token: string;
-  user: {
-    id: string;
-    email: string;
-    name: string;
-  };
-}
-
+// API методы для аутентификации (если ещё нет)
 export const authApi = {
-  login: (credentials: LoginRequest) => 
-    api.post<LoginResponse>('/auth/login', credentials),
-  getMe: () => api.get('/me'),
+  login: (credentials: { email: string; password: string }) =>
+    api.post<{ token: string; user: any }>('/auth/login', credentials),
 };

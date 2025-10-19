@@ -7,3 +7,24 @@ html, body, #root {
 body { 
   background-color: #f3f4f6; 
 }
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+/* Для плавного появления/исчезания */
+.network-indicator-enter {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.network-indicator-enter-active {
+  opacity: 1;
+  transform: scaleX(1);
+  transition: opacity 300ms, transform 300ms;
+}

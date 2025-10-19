@@ -1,19 +1,22 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useListingDetail } from "@/hooks/useListingDetail";
-import { useFavoritesStore, useAuthStore } from "@/app/providers/ZustandStore";
+import { useAuthStore, useFavoritesStore } from "@/app/providers/store/ZustandStore";
+import { useToggleFavorite } from "@/hooks/useFavorites";
 import { PhotoGallery } from "@/widgets/PhotoGallery/PhotoGallery";
 import { BookingForm } from "@/features/booking/BookingForm";
-import { api } from "@/shared/api";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 export const ListingDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { data: listing, isLoading, isError, error } = useListingDetail(id || "");
-  const { favorites, toggleFavorite } = useFavoritesStore();
   const token = useAuthStore((state) => state.token);
+  const favorites = useFavoritesStore((state) => state.favorites); // ← Берем из Zustand
+  const { mutate: toggleFavorite, isPending } = useToggleFavorite();
 
+
+  // Early returns для ошибок и загрузки
   if (!id) {
     return (
       <div className="container mx-auto p-4">
@@ -40,7 +43,7 @@ export const ListingDetailPage: React.FC = () => {
     );
   }
 
-  if (isError || !listing) {
+  if (isError) {
     return (
       <div className="container mx-auto p-4">
         <div className="bg-white rounded-lg shadow p-8 text-center">
@@ -67,18 +70,14 @@ export const ListingDetailPage: React.FC = () => {
     );
   }
 
-  const isFav = favorites.includes(listing?.id ?? '');
+  // Если дошли сюда, значит listing точно существует
+  if (!listing) return null;
 
-  async function handleToggleFavorite() {
-    if (!token) return;
-    
+  const isFav = favorites.includes(listing.id);
+
+  function handleToggleFavorite() {
+    if (!token || isPending || !listing) return;
     toggleFavorite(listing.id);
-    try {
-      await api.post(`/me/favorites/${listing.id}/toggle`);
-    } catch (err) {
-      toggleFavorite(listing.id);
-      console.error("Toggle favorite failed", err);
-    }
   }
 
   return (
@@ -91,10 +90,12 @@ export const ListingDetailPage: React.FC = () => {
           <span>←</span>
           <span>Back to listings</span>
         </button>
-        
+
         <div className="flex justify-between items-start gap-4">
           <div className="flex-1">
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{listing.title}</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+              {listing.title}
+            </h1>
             <div className="flex flex-wrap items-center gap-3 text-gray-600">
               <span className="flex items-center gap-1 bg-gray-100 px-3 py-1 rounded-full text-sm">
                 📍 {listing.city}
@@ -109,7 +110,7 @@ export const ListingDetailPage: React.FC = () => {
               )}
             </div>
           </div>
-          
+
           {token ? (
             <button
               onClick={handleToggleFavorite}
@@ -140,9 +141,11 @@ export const ListingDetailPage: React.FC = () => {
           <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-2 h-8 bg-blue-600 rounded-full"></div>
-              <h2 className="text-2xl font-bold text-gray-900">About this place</h2>
+              <h2 className="text-2xl font-bold text-gray-900">
+                About this place
+              </h2>
             </div>
-            
+
             {listing.description ? (
               <div className="prose prose-lg max-w-none text-gray-700">
                 <p className="text-lg leading-relaxed mb-4">
@@ -163,7 +166,9 @@ export const ListingDetailPage: React.FC = () => {
               <div className="text-center py-8 text-gray-500">
                 <div className="text-4xl mb-3">🏡</div>
                 <p className="text-lg">No description provided</p>
-                <p className="text-sm mt-1">Contact the host for more details</p>
+                <p className="text-sm mt-1">
+                  Contact the host for more details
+                </p>
               </div>
             )}
           </section>
@@ -172,12 +177,17 @@ export const ListingDetailPage: React.FC = () => {
             <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-2 h-8 bg-green-600 rounded-full"></div>
-                <h2 className="text-2xl font-bold text-gray-900">What this place offers</h2>
+                <h2 className="text-2xl font-bold text-gray-900">
+                  What this place offers
+                </h2>
               </div>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {listing.amenities.map((amenity, index) => (
-                  <div key={index} className="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                {listing.amenities.map((amenity : string, index : number) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-lg transition-colors"
+                  >
                     <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-green-600 text-sm">✓</span>
                     </div>
@@ -191,29 +201,35 @@ export const ListingDetailPage: React.FC = () => {
           <section className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-2 h-8 bg-purple-600 rounded-full"></div>
-              <h2 className="text-2xl font-bold text-gray-900">Cancellation policy</h2>
+              <h2 className="text-2xl font-bold text-gray-900">
+                Cancellation policy
+              </h2>
             </div>
-            
+
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                   <span className="text-green-600 text-sm">✓</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Free cancellation</h3>
+                  <h3 className="font-semibold text-gray-900">
+                    Free cancellation
+                  </h3>
                   <p className="text-gray-600 mt-1">
-                    Cancel up to 24 hours before check-in for a full refund. 
-                    No questions asked.
+                    Cancel up to 24 hours before check-in for a full refund. No
+                    questions asked.
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-3">
                 <div className="w-6 h-6 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                   <span className="text-yellow-600 text-sm">!</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Flexible booking</h3>
+                  <h3 className="font-semibold text-gray-900">
+                    Flexible booking
+                  </h3>
                   <p className="text-gray-600 mt-1">
                     Contact the host for special arrangements or extended stays.
                   </p>
@@ -225,9 +241,9 @@ export const ListingDetailPage: React.FC = () => {
 
         <div className="lg:col-span-1">
           <div className="sticky top-4">
-            <BookingForm 
-              listingId={listing.id} 
-              pricePerNight={listing.pricePerNight} 
+            <BookingForm
+              listingId={listing.id}
+              pricePerNight={listing.pricePerNight}
             />
           </div>
         </div>

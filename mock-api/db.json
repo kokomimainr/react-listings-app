@@ -6,8 +6,30 @@
       "password": "demo123",
       "name": "Demo User",
       "favorites": [
-        "l12",
-        "l7"
+        "l7",
+        "l25",
+        "l16",
+        "l13",
+        "l32",
+        "l34",
+        "l17",
+        "l40",
+        "l10",
+        "l38",
+        "l22",
+        "l1"
+      ]
+    },
+    {
+      "id": "u3",
+      "email": "demomo@user.com",
+      "password": "demo123",
+      "name": "Demo User",
+      "favorites": [
+        "l17",
+        "l32",
+        "l25",
+        "l1"
       ]
     }
   ],
@@ -27,7 +49,7 @@
         "WiFi",
         "AC"
       ],
-      "bookingsCount": 2,
+      "bookingsCount": 5,
       "description": "Nice place near center"
     },
     {
@@ -157,7 +179,7 @@
         "Terrace",
         "Parking"
       ],
-      "bookingsCount": 0,
+      "bookingsCount": 2,
       "description": "Spacious penthouse with panoramic city view"
     },
     {
@@ -232,7 +254,7 @@
         "WiFi",
         "Kitchen"
       ],
-      "bookingsCount": 4,
+      "bookingsCount": 6,
       "description": "Minimalist style apartment with clean design"
     },
     {
@@ -250,7 +272,7 @@
         "WiFi",
         "Parking"
       ],
-      "bookingsCount": 3,
+      "bookingsCount": 5,
       "description": "Charming home in historic neighborhood"
     },
     {
@@ -359,7 +381,7 @@
       "amenities": [
         "WiFi"
       ],
-      "bookingsCount": 10,
+      "bookingsCount": 11,
       "description": "Simple private room in downtown area"
     },
     {
@@ -431,7 +453,7 @@
         "WiFi",
         "Kitchen"
       ],
-      "bookingsCount": 1,
+      "bookingsCount": 2,
       "description": "Compact and modern apartment downtown"
     },
     {
@@ -551,7 +573,7 @@
         "WiFi",
         "Kitchen"
       ],
-      "bookingsCount": 1,
+      "bookingsCount": 3,
       "description": "Bright apartment with modern design"
     },
     {
@@ -636,7 +658,7 @@
         "WiFi",
         "Balcony"
       ],
-      "bookingsCount": 6,
+      "bookingsCount": 7,
       "description": "Boutique-style apartment near central park"
     },
     {
@@ -687,7 +709,7 @@
         "WiFi",
         "AC"
       ],
-      "bookingsCount": 2,
+      "bookingsCount": 4,
       "description": "Central loft ideal for city explorers"
     },
     {
@@ -752,6 +774,150 @@
       "checkOut": "2025-10-22",
       "guests": 4,
       "createdAt": "2025-10-18T12:53:57.332Z"
+    },
+    {
+      "id": "b_1fc1d33f-955e-4129-870c-064c8a002517",
+      "listingId": "l13",
+      "userId": "u1",
+      "checkIn": "2025-10-18",
+      "checkOut": "2025-10-19",
+      "guests": 3,
+      "createdAt": "2025-10-18T16:44:00.569Z"
+    },
+    {
+      "id": "b_bce133b5-3377-433d-9ba9-f4c094281a18",
+      "listingId": "l12",
+      "userId": "u1",
+      "checkIn": "2025-10-19",
+      "checkOut": "2025-10-20",
+      "guests": 1,
+      "createdAt": "2025-10-19T06:20:33.079Z"
+    },
+    {
+      "id": "b_751f1a29-9f76-4cc6-90af-5d0f2dfa5383",
+      "listingId": "l1",
+      "userId": "u1",
+      "checkIn": "2025-10-24",
+      "checkOut": "2025-10-31",
+      "guests": 5,
+      "createdAt": "2025-10-19T06:21:06.114Z"
+    },
+    {
+      "id": "b_983ea407-c09a-405c-bb55-da360ed0fc64",
+      "listingId": "l38",
+      "userId": "u1",
+      "checkIn": "2025-10-25",
+      "checkOut": "2025-10-30",
+      "guests": 5,
+      "createdAt": "2025-10-19T06:21:26.922Z"
+    },
+    {
+      "id": "b_9b026ea8-bdcc-4727-8d87-eaa7743227ba",
+      "listingId": "l23",
+      "userId": "u1",
+      "checkIn": "2025-10-19",
+      "checkOut": "2025-10-20",
+      "guests": 1,
+      "createdAt": "2025-10-19T06:22:01.570Z"
+    },
+    {
+      "id": "b_c916d5ce-a571-4e85-922f-8806eead27cd",
+      "listingId": "l13",
+      "userId": "u1",
+      "checkIn": "2025-10-19",
+      "checkOut": "2025-10-20",
+      "guests": 4,
+      "createdAt": "2025-10-19T06:26:22.307Z"
+    },
+    {
+      "id": "b_db819c5b-1b73-4889-8cf9-b6cddb673f8f",
+      "listingId": "l30",
+      "userId": "u1",
+      "checkIn": "2025-10-19",
+      "checkOut": "2025-10-20",
+      "guests": 1,
+      "createdAt": "2025-10-19T06:27:22.801Z"
+    },
+    {
+      "id": "b_47728a59-5407-4009-bec4-c22359bd47ce",
+      "listingId": "l38",
+      "userId": "u1",
+      "checkIn": "2025-10-19",
+      "checkOut": "2025-10-20",
+      "guests": 1,
+      "createdAt": "2025-10-19T06:27:57.626Z"
+    },
+    {
+      "id": "b_6ccb93fa-5d68-4faf-97f0-1e92787b3efc",
+      "listingId": "l35",
+      "userId": "u1",
+      "checkIn": "2025-10-19",
+      "checkOut": "2025-10-27",
+      "guests": 1,
+      "createdAt": "2025-10-19T06:28:49.663Z"
+    },
+    {
+      "id": "b_6ee2e668-c1a5-4ff7-a089-fc3e560f1ff0",
+      "listingId": "l30",
+      "userId": "u1",
+      "checkIn": "2025-10-31",
+      "checkOut": "2025-11-01",
+      "guests": 1,
+      "createdAt": "2025-10-19T06:32:30.593Z"
+    },
+    {
+      "id": "b_e1281a27-b21c-49de-b95c-b44d0eb2719b",
+      "listingId": "l12",
+      "userId": "u1",
+      "checkIn": "2025-10-28",
+      "checkOut": "2025-10-30",
+      "guests": 1,
+      "createdAt": "2025-10-19T06:33:57.803Z"
+    },
+    {
+      "id": "b_07420582-f466-4c42-9460-44d2ffecaedc",
+      "listingId": "l19",
+      "userId": "u1",
+      "checkIn": "2025-10-23",
+      "checkOut": "2025-10-24",
+      "guests": 1,
+      "createdAt": "2025-10-19T06:35:59.714Z"
+    },
+    {
+      "id": "b_0ecfb954-97c0-4e65-9916-141a0438c74e",
+      "listingId": "l8",
+      "userId": "u1",
+      "checkIn": "2025-10-19",
+      "checkOut": "2025-10-20",
+      "guests": 1,
+      "createdAt": "2025-10-19T06:38:59.104Z"
+    },
+    {
+      "id": "b_a40550a7-375d-4609-984c-9aa74cb433bd",
+      "listingId": "l8",
+      "userId": "u1",
+      "checkIn": "2025-10-21",
+      "checkOut": "2025-10-22",
+      "guests": 1,
+      "createdAt": "2025-10-19T06:40:29.392Z"
+    },
+    {
+      "id": "b_e029cbc9-f801-4f5e-935e-0068a4a224eb",
+      "listingId": "l1",
+      "userId": "u1",
+      "checkIn": "2025-10-19",
+      "checkOut": "2025-10-20",
+      "guests": 1,
+      "createdAt": "2025-10-19T06:41:28.247Z"
+    },
+    {
+      "id": "b_ad4d4a70-26fd-4266-8939-d5eaae0f0cbc",
+      "listingId": "l1",
+      "userId": "u1",
+      "checkIn": "2025-10-31",
+      "checkOut": "2025-11-01",
+      "guests": 1,
+      "createdAt": "2025-10-19T06:41:38.359Z"
     }
   ]
 }
